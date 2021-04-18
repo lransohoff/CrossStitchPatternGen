@@ -17,7 +17,9 @@ def run():
     n_colors = 7
     p = Pattern(img = img_new,
                 num_colors = n_colors)
-    
+    p.import_colormap()
+    dmc_rgb = p.assign_colors()
+    p.display_img(dmc_rgb)
     
 if __name__ == '__main__':
     run()
