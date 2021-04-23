@@ -15,10 +15,12 @@ class Image:
         window = int(np.floor(n/self.num_win))
         n = n - n % window
         m = m - m % window
-        img_new = np.uint8(np.zeros((n, m, 3)))
-        for i in range(0, n, window):
-            for j in range(0, m, window):
-                img_new[i:i+window,j:j+window] = np.uint8(img[i:i+window,j:j+window].mean(axis=(0,1)))
+        n_new = int(n/window)
+        m_new = int(m/window)
+        img_new = np.uint8(np.zeros((n_new, m_new, 3)))
+        for i in range(0, n_new):
+            for j in range(0, m_new):
+                img_new[i,j] = np.uint8(img[i*window:(i+1)*window,j*window:(j+1)*window].mean(axis=(0,1)))
         return img_new
     
     def display_img(self, img):

@@ -5,8 +5,8 @@ from Image.image import Image
 from Pattern.pattern import Pattern
 
 def run():
-    in_path = r'C:\Users\laure\Documents\Lauren Folder\Python Scripts\CrossStitchPatternGen\IMG_9169.JPG'
-    n_windows = 40
+    in_path = r'C:\Users\laure\Documents\Lauren Folder\Python Scripts\CrossStitchPatternGen\IMG_8936.JPG'
+    n_windows = 50
     i = Image(import_path = in_path,
               num_windows = n_windows)
     img = i.import_image()
