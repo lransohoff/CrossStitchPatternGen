@@ -62,7 +62,29 @@ class Pattern:
         new_dmc = self.assign_colors(new_rgb_img)
         return new_dmc
         
-    def display_img(self, img):
+    def display_pattern_img(self, img):
         fig, axs = plt.subplots(1, 1, figsize=(5,5))
-        axs.imshow(img)
+        ext = (0, img.shape[1], img.shape[0], 0)
+        axs.imshow(img, extent=ext)
+        # Set grid lines that are useful for a cross stitch pattern
+        # This is thick lines every 10 cells, thin lines every cell
+        axs.grid(which='major',color='k',linewidth=1)
+        axs.grid(which='minor',color='k',linewidth=0.4)
+        # Show the minor ticks and grid
+        axs.minorticks_on()
+        # Set the major ticks to every 10
+        x_major_ticks = np.arange(0,img.shape[1],10)
+        y_major_ticks = np.arange(0,img.shape[0],10)
+        axs.set_xticks(x_major_ticks)
+        axs.set_yticks(y_major_ticks)
+        
+        x_minor_ticks = np.arange(0,img.shape[1],1)
+        y_minor_ticks = np.arange(0,img.shape[0],1)
+        axs.set_xticks(x_minor_ticks, minor=True)
+        axs.set_yticks(y_minor_ticks, minor=True)
+        
+        # Set aspect to equal
+        axs.set_aspect('equal')
+        
+        
                 

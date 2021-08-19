@@ -1,5 +1,7 @@
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
+matplotlib.use('Qt4Agg',warn=False)
 
 class Image:
     def __init__(self, import_path, num_windows):
@@ -25,6 +27,8 @@ class Image:
     
     def display_img(self, img):
         fig, axs = plt.subplots(1, 1, figsize=(5,5))
-        axs.imshow(img)
+        ext = (0, img.shape[1], img.shape[0], 0)
+        axs.imshow(img, extent=ext)
+        axs.grid(color='k',linewidth=1)
         
     
